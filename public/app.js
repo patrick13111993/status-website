@@ -1,43 +1,31 @@
-var createStatusList = function (title, description, status, resolved) {
-  var newStatus = document.createElement('ul');
-  newStatus.classList.add('status');
-
-  var resolvedText = "false";
-  if(resolved) {
-    resolvedText = "true"
-  }
+var createStatusList = function (title, body, resolved) {
+  var statusList = document.createElement('ul');
+  statusList.classList.add('status');
 
   var listTitle = document.createElement('li');
-  var listDescription = document.createElement('li');
-  var listStatus = document.createElement('li');
+  var listBody = document.createElement('li');
   var listResolved = document.createElement('li');
   listTitle.innerText = title;
-  listDescription.innerText = description;
-  listStatus.innerText = status;
-  listResolved.innerText = resolvedText;
-  newStatus.appendChild(listTitle);
-  newStatus.appendChild(listDescription);
-  newStatus.appendChild(listStatus);
-  newStatus.appendChild(listResolved);
+  listBody.innerText = body;
+  listResolved.innerText = resolved;
+  statusList.appendChild(listTitle);
+  statusList.appendChild(listBody);
+  statusList.appendChild(listResolved);
 
-  return newStatus;
+  return statusList;
 }
 
-var appendElements = function (statuses, list) {
-  statuses.appendChild(list);
-}
-
-var addStatus = function(title, description, status, resolved) {
-  var list = createStatusList(title, description, status, resolved);
+var addStatus = function(title, body, resolved) {
+  var list = createStatusList(title, body, resolved);
 
   var statuses = document.getElementById('statuses');
-  appendElements(statuses, list);
+  statuses.appendChild(list);
 }
 
 
 var app = function() {
   
-  addStatus("test", "test", "test", true);
+  addStatus("test", "test", "test");
 }
 
 window.onload = app;
